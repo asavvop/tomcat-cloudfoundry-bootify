@@ -5,11 +5,19 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>example.demo</groupId>
-  <artifactId>helloworld</artifactId>
+  <artifactId>helloworld-bootify</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>helloworld Maven Webapp</name>
+  <name>helloworld bootify Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.2</version>
+    <relativePath />
+  </parent>
+
 
   <properties>
     <java.version>17</java.version>
@@ -17,22 +25,50 @@
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
+
+
     <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+      <version>10.1.43</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <version>3.2.2</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+		</dependency>
+
+
+    <!-- <dependency>
       <groupId>jakarta.platform</groupId>
       <artifactId>jakarta.jakartaee-web-api</artifactId>
       <version>9.0.0</version>
       <scope>provided</scope>
-    </dependency>
+    </dependency> -->
   </dependencies>
 
   <build>
-    <finalName>helloworld</finalName>
+    <finalName>helloworld-bootify</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>

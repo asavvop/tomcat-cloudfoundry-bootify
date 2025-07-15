@@ -2,18 +2,19 @@ package com.microsoft.example;
 
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/helloservlet")
+@Component
 public class HelloServlet extends HttpServlet {
 
-    @Resource(name = "envEntryName")
-    private String envEntryName;
+    @Resource(name = "envConfiguration")
+    private EnvConfiguration envConfiguration;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +27,7 @@ public class HelloServlet extends HttpServlet {
         out.println("this.getServletContext().getServerInfo() = " + this.getServletContext().getServerInfo());
 
          
-        out.println("resource with envEntryName = " + envEntryName);
+        out.println("resource with foo = " + envConfiguration.getFoo());
 
         out.println("this.getClass().getSuperclass() = " + this.getClass().getSuperclass());
         out.println("System.getProperty(\"java.version\") = " + System.getProperty("java.version"));
